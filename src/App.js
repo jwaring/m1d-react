@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import M1D from './M1D';
 import './App.css';
+import {Row, Container, Col, Navbar} from 'react-bootstrap';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+      <Navbar bg="dark" variant="dark" expand="lg">
+          <Navbar.Brand >1D Hydrodynamic Model</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      </Navbar>
+
+      <Container>
+          <Row>
+              <Col>
+                  <M1D/>
+              </Col>
+              <Col>2 of 2</Col>
+          </Row>
+      </Container>
+      </>
   );
 }
 
