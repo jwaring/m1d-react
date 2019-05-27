@@ -14,11 +14,11 @@ import HD1DConfig from "./HD1DConfig";
  */
 class M1D extends React.Component {
 
-  constructor(prop) {
-    super(prop);
+  constructor(props) {
+    super(props);
     this.intervalId = null;
     this.config = new HD1DConfig();
-    this.config.setSpecification(3);
+    this.updateConfig(this.config, props);
     this.changeWaveStateClick = this.changeWaveStateClick.bind(this);
   }
 
@@ -29,6 +29,13 @@ class M1D extends React.Component {
 
     this.wave = new Wave(canvas, this.config);
     this.startWave(25);
+  }
+
+  shouldComponentUpdate(nextProps) {
+    this.suspendWave();
+    this.updateConfig(this.config, nextProps);
+    this.restartWave(25);
+    return true;
   }
 
   setCanvasSize(width, height) {
@@ -81,8 +88,6 @@ class M1D extends React.Component {
   }
 
   render() {
-
-
     return (
         <div className="m1d">
           <canvas id="wave" onClick={this.changeWaveStateClick}>
@@ -90,6 +95,15 @@ class M1D extends React.Component {
           </canvas>
         </div>
     );
+  }
+
+  // PRIVATE
+  updateConfig(config, props) {
+      config.ncells = props.ncells;
+      config.dx = props.length / config.ncells;
+      config.dt = (1/100.0) * config.dx;
+      config.fCoeff = props.fcoeff;
+      config.setSpecification(props.forcingSpec);
   }
 
 }

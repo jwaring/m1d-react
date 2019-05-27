@@ -60,10 +60,11 @@ class M1DSettings extends React.Component {
             ncells: props.ncells,
             dx: props.length / props.ncells,
             dt: 1,
-            fcoeff: 0.00000,
+            fcoeff: props.fcoeff,
             forcingSpec: props.forcingSpec
         };
     }
+
 
     // Capture a change in the number of cells along the channel. Notify parent.
     changeNumberOfCells(n) {
@@ -71,24 +72,28 @@ class M1DSettings extends React.Component {
             ncells: n,
             dx: this.state.length / n,
             dt: 1,
+        }, () => {
+            this.props.onChange(this.state);
         });
-        this.props.onChange(this.state);
     }
 
     // Capture a change in the friction coefficient along the channel. Notify parent.
     changeFrictionCoeff(fc) {
         this.setState({
             fcoeff: fc
+        }, () => {
+            this.props.onChange(this.state);
         });
-        this.props.onChange(this.state);
     }
 
     // Capture a change in the boundary forcing function. Notify parent.
     changeForcing(f) {
+        console.log(this.toForcingSpec(f.target.id));
         this.setState({
             forcingSpec: this.toForcingSpec(f.target.id)
+        }, () => {
+            this.props.onChange(this.state);
         });
-        this.props.onChange(this.state);
     }
 
     render() {
@@ -111,7 +116,7 @@ class M1DSettings extends React.Component {
                     </Card.Text>
                     <Card.Text>
                         A friction coefficient of <TangleText value={this.state.fcoeff} pixelDistance={2} style={frictionStyle} onChange={this.changeFrictionCoeff} format={formatFriction}
-                                                              min={0.00000} max={0.001} step={0.00001}/>
+                                                              min={0.00000} max={0.01} step={0.00001}/>
                         is being applied.
                     </Card.Text>
                     <div>
