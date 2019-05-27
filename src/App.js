@@ -30,7 +30,13 @@ class App extends React.Component {
         return (
             <>
                 <Navbar bg="dark" variant="dark" expand="lg">
-                    <Navbar.Brand></Navbar.Brand>
+                    <Navbar.Brand>
+                        <img
+                            src="sws.png"
+                            height="30"
+                            className="d-inline-block align-top"
+                        />
+                    </Navbar.Brand>
                     <Navbar.Text>1D Hydrodynamic Model</Navbar.Text>
                 </Navbar>
                 <Container>
@@ -53,7 +59,19 @@ class App extends React.Component {
                             />
                         </Col>
                     </Row>
+                    <Row>
+                        <Col>
+                            <p style={{fontSize: 'smaller'}}>
+                                Click on the wave to suspend and resume
+                            </p>
+                        </Col>
+                    </Row>
                 </Container>
+                <div className="fixed-bottom">
+                    <Navbar bg="dark" variant="dark" expand="lg">
+                        <Navbar.Text>Copyright (C) 2019, SoftWaring Solutions ATF The Miss Trust</Navbar.Text>
+                    </Navbar>
+                </div>
             </>
         );
     }

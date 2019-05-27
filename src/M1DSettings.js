@@ -71,7 +71,7 @@ class M1DSettings extends React.Component {
         this.setState({
             ncells: n,
             dx: this.state.length / n,
-            dt: 1,
+            dt: (1 / 100.0) * this.state.length / n,
         }, () => {
             this.props.onChange(this.state);
         });
@@ -110,7 +110,7 @@ class M1DSettings extends React.Component {
                     <Card.Text>
                         A 1-dimensional depth-averaged hydrodynamic model
                         representation of a channel <b><NumberFormat value={this.state.length} displayType={'text'} thousandSeparator={true}/>m</b> long, divided into&nbsp;
-                        <TangleText value={this.state.ncells} pixelDistance={10} style={nCellsStyle} onChange={this.changeNumberOfCells} min={10} max={300} step={10}/>
+                        <TangleText value={this.state.ncells} pixelDistance={10} style={nCellsStyle} onChange={this.changeNumberOfCells} min={20} max={500} step={10}/>
                         cells. Each cell is <b><NumberFormat value={this.state.dx} displayType={'text'} decimalScale={0} thousandSeparator={true}/>m</b> long and
                         the model is forward time-stepped at <b><NumberFormat value={this.state.dt} displayType={'text'} decimalScale={2} thousandSeparator={true}/>s</b>.
                     </Card.Text>
