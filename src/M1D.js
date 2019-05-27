@@ -1,9 +1,17 @@
+/**
+ * Copyright (C) 2019, SoftWaring Solutions ATF The Miss Trust
+ */
 import React from 'react';
 import './M1D.css';
 import Wave from './Wave';
 import HD1DConfig from "./HD1DConfig";
 
-
+/**
+ * 1-dimensions model component. Control the start and stopping of the model
+ * and updating of the model parameters (e.g. friction, boundary conditions, dx and dt etc).
+ *
+ * @author Jason Waring
+ */
 class M1D extends React.Component {
 
   constructor(prop) {
@@ -11,6 +19,7 @@ class M1D extends React.Component {
     this.intervalId = null;
     this.config = new HD1DConfig();
     this.config.setSpecification(3);
+    this.changeWaveStateClick = this.changeWaveStateClick.bind(this);
   }
 
   componentDidMount() {
@@ -63,19 +72,20 @@ class M1D extends React.Component {
     self.wave.step();
   }
 
+  changeWaveStateClick() {
+    if (this.intervalId !== null) {
+      this.suspendWave();
+    } else {
+      this.resumeWave();
+    }
+  }
+
   render() {
-    let changeWaveStateClick = () => {
-      if (this.intervalId !== null) {
-        this.suspendWave();
-      } else {
-        this.resumeWave();
-      }
-    };
+
 
     return (
         <div className="m1d">
-          <canvas id="wave"
-                  onClick={changeWaveStateClick}>
+          <canvas id="wave" onClick={this.changeWaveStateClick}>
             Channel Model Display Pane
           </canvas>
         </div>

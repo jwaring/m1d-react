@@ -1,3 +1,6 @@
+/**
+ * Copyright (C) 2019, SoftWaring Solutions ATF The Miss Trust
+ */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';

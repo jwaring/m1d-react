@@ -1,5 +1,11 @@
 /**
- * Copyright 2019 SoftWaring Solutions Pty Ltd.
+ * Copyright (C) 2019, SoftWaring Solutions ATF The Miss Trust
+ */
+
+/**
+ * Basic drawing class.
+ *
+ * @author Jason Waring
  */
 class DrawingPane {
 

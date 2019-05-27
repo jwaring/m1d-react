@@ -1,7 +1,6 @@
-/*
- * Copyright 2019 SoftWaring Solutions Pty Ltd.
+/**
+ * Copyright (C) 2019, SoftWaring Solutions ATF The Miss Trust
  */
-
 
 /**
   * A 1-d Hydrodyanmic model configuration
@@ -66,7 +65,7 @@ class HD1DConfig {
         this.dx = 100.0;             // Grid width.
         this.h = 150.0;              // Depth.
         this.dt = 1.0;               // Time step in s.
-        this.fCoeff = 0.0001;        // Friction coefficient.
+        this.fCoeff = 0.000;        // Friction coefficient.
         this.lambdaLength = 100;
         this.etaspec = PhasedWaveEtaSpec;
         this.uspec = EmptyUSpec;

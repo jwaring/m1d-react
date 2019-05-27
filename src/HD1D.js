@@ -1,13 +1,21 @@
-/*
- * Copyright 2019 SoftWaring Solutions Pty Ltd.
+/**
+ * Copyright (C) 2019, SoftWaring Solutions ATF The Miss Trust
  */
 
 const G = 9.81;               // Gravity.
 
 /**
-  * A 1-d Hydrodyanmic model written in JavaScript
-  * @author Jason Waring
-  */
+ * A 1-d Hydrodyanmic model.
+ *
+ * This is a channel model, which implements depth-averaged momentum and continuity equations.
+ * The channel is represented as an equispaced grid (dx). The surface evelation is forced at either
+ * end of the channel, using the etaspec function (see config). Hydrodynamic models are time-stepping,
+ * but the delta time (dt in this case) must not be less than the time it take a parcel of water moving
+ * at the maximum velocity to traverse a cell dimension (dx). To select an appropriate dt, consider
+ * the courant number (see https://en.wikipedia.org/wiki/Courant%E2%80%93Friedrichs%E2%80%93Lewy_condition)
+ *
+ * @author Jason Waring
+ */
 class HD1D {
 
     // Initialisation of the class.

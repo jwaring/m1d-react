@@ -1,3 +1,6 @@
+/**
+ * Copyright (C) 2019, SoftWaring Solutions ATF The Miss Trust
+ */
 import HD1D from './HD1D';
 import DrawingPane from './DrawingPane';
 
@@ -7,6 +10,11 @@ const sky = {r:224, g:238, b:255};
 const water = {r:88, g:160, b:88};
 const stepsPerDraw = 2;
 
+/**
+ * Draw the wave onto the canvas.
+ *
+ * @author Jason Waring
+ */
 class Wave {
 
   constructor(canvas, config) {
